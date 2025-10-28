@@ -1,0 +1,59 @@
+---
+export interface Props {
+  data: Array<Array<{ course: string; color: string }>>;
+}
+
+const { data } = Astro.props;
+
+const getColorClass = (color: string) => {
+  const colorMap: { [key: string]: string } = {
+    danger: 'bg-red-600',
+    primary: 'bg-blue-600',
+    info: 'bg-cyan-600',
+    success: 'bg-green-600',
+    dark: 'bg-gray-800'
+  };
+  return colorMap[color] || 'bg-gray-600';
+};
+---
+
+<div id="timetable-grid" class="overflow-x-auto rounded-lg shadow-xl">
+  <table class="w-full border-collapse">
+    {data.map((row, rowIndex) => (
+      <tr class={rowIndex === 0 ? 'font-bold' : ''}>
+        {row.map((cell, cellIndex) => (
+          <td
+            class={`
+              ${getColorClass(cell.color)}
+              ${cellIndex === 0 ? 'font-bold' : ''}
+              p-3 text-center border border-gray-600 min-w-[120px]
+              ${cellIndex === 0 ? 'sticky left-0 z-10' : ''}
+            `}
+          >
+            {cell.course}
+          </td>
+        ))}
+      </tr>
+    ))}
+  </table>
+</div>
+
+<style>
+  @media print {
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    #timetable-grid {
+      width: 100%;
+      overflow: visible;
+    }
+    table {
+      font-size: 11px;
+    }
+    td {
+      padding: 4px !important;
+      border: 1px solid #000 !important;
+    }
+  }
+</style>

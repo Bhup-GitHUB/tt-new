@@ -1,22 +1,42 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+export interface Props {
+  title: string;
+  description?: string;
+}
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+const { title, description = "University Timetable Generator" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-900 text-white min-h-screen">
+    <header class="container mx-auto px-4 py-4">
+      <div class="flex justify-between items-center">
+        <a href="/" class="text-2xl font-bold text-green-400">🎓 Timetable</a>
+        <a href="https://github.com/your-repo" class="text-blue-400 hover:text-blue-300">
+          GitHub
+        </a>
+      </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+      <slot />
+    </main>
+
+    <footer class="bg-gray-800 py-8 mt-12">
+      <div class="container mx-auto px-4 text-center">
+        <p class="text-gray-400">
+          Made with ❤️ | Open Source Project
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
