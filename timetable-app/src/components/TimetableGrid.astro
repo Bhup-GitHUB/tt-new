@@ -17,17 +17,18 @@ const getColorClass = (color: string) => {
 };
 ---
 
-<div id="timetable-grid" class="overflow-x-auto rounded-lg shadow-xl">
+<div id="timetable-grid" class="overflow-x-auto rounded-2xl shadow-2xl bg-slate-800/50 backdrop-blur-sm border border-slate-600/50">
   <table class="w-full border-collapse">
     {data.map((row, rowIndex) => (
-      <tr class={rowIndex === 0 ? 'font-bold' : ''}>
+      <tr class={rowIndex === 0 ? 'font-bold bg-slate-700/80' : 'hover:bg-slate-700/30 transition-colors duration-200'}>
         {row.map((cell, cellIndex) => (
           <td
             class={`
               ${getColorClass(cell.color)}
-              ${cellIndex === 0 ? 'font-bold' : ''}
-              p-3 text-center border border-gray-600 min-w-[120px]
-              ${cellIndex === 0 ? 'sticky left-0 z-10' : ''}
+              ${cellIndex === 0 ? 'font-bold text-slate-200' : 'text-slate-100'}
+              p-4 text-center border border-slate-500/50 min-w-[140px] text-sm md:text-base
+              ${cellIndex === 0 ? 'sticky left-0 z-10 bg-slate-800/90 backdrop-blur-sm' : ''}
+              transition-all duration-200 hover:shadow-lg
             `}
           >
             {cell.course}

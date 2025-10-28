@@ -12,24 +12,33 @@ Object.entries(timetableData).forEach(([sheetName, sheetData]) => {
 ---
 
 <Layout title="University Timetable Generator">
-  <div class="text-center mb-8">
-    <h1 class="text-4xl md:text-5xl font-bold text-green-400 mb-4">
+  <div class="text-center mb-12">
+    <h1 class="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 via-green-400 to-blue-500 bg-clip-text text-transparent mb-6 leading-tight">
       University Timetable Generator
     </h1>
-    <p class="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto">
+    <p class="text-slate-300 text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed">
       Select your branch category and section to view your personalized timetable
     </p>
   </div>
 
   <TimetableSelector sheets={sheets} classesBySheet={classesBySheet} />
 
-  <div class="mt-12 max-w-3xl mx-auto">
-    <div class="bg-gradient-to-r from-green-900 to-blue-900 border border-green-700 rounded-lg p-6">
-      <h2 class="text-xl font-bold text-green-300 mb-3">Latest Updates</h2>
-      <ul class="space-y-2 text-green-100">
-        <li>Timetable for 2024-25 (EVEN SEM) is updated!</li>
-        <li>New Features: Save as PNG or PDF</li>
-        <li>Save your favorite timetables for quick access</li>
+  <div class="mt-16 max-w-4xl mx-auto">
+    <div class="bg-gradient-to-r from-blue-900/50 to-green-900/50 backdrop-blur-sm border border-blue-500/30 rounded-2xl p-8 shadow-2xl">
+      <h2 class="text-2xl font-bold bg-gradient-to-r from-blue-300 to-green-300 bg-clip-text text-transparent mb-6 text-center">Latest Updates</h2>
+      <ul class="space-y-4 text-slate-200 text-lg">
+        <li class="flex items-center gap-3">
+          <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+          Timetable for 2024-25 (EVEN SEM) is updated!
+        </li>
+        <li class="flex items-center gap-3">
+          <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
+          New Features: Save as PNG or PDF
+        </li>
+        <li class="flex items-center gap-3">
+          <div class="w-2 h-2 bg-purple-400 rounded-full"></div>
+          Save your favorite timetables for quick access
+        </li>
       </ul>
     </div>
   </div>

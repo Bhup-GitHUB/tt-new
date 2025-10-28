@@ -7,17 +7,17 @@ export interface Props {
 const { sheets, classesBySheet } = Astro.props;
 ---
 
-<div class="max-w-2xl mx-auto">
-  <div class="bg-gray-800 rounded-lg p-6 shadow-xl border border-gray-700">
-    <form id="timetable-form" class="space-y-6">
-      <div class="space-y-2">
-        <label for="sheet-select" class="block text-lg font-medium text-gray-200">
+<div class="max-w-4xl mx-auto">
+  <div class="bg-slate-800/60 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-slate-600/50">
+    <form id="timetable-form" class="space-y-8">
+      <div class="space-y-3">
+        <label for="sheet-select" class="block text-xl font-semibold text-slate-200">
           Select Category (Branch)
         </label>
         <select
           id="sheet-select"
           name="sheet"
-          class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-2 focus:ring-blue-500"
+          class="w-full px-6 py-4 bg-slate-700/80 border border-slate-500 rounded-xl text-white text-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 hover:bg-slate-700"
           required
         >
           <option value="">-- Choose a Category --</option>
@@ -27,14 +27,14 @@ const { sheets, classesBySheet } = Astro.props;
         </select>
       </div>
 
-      <div class="space-y-2">
-        <label for="class-select" class="block text-lg font-medium text-gray-200">
+      <div class="space-y-3">
+        <label for="class-select" class="block text-xl font-semibold text-slate-200">
           Select Class (Section)
         </label>
         <select
           id="class-select"
           name="class"
-          class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-2 focus:ring-blue-500"
+          class="w-full px-6 py-4 bg-slate-700/80 border border-slate-500 rounded-xl text-white text-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 hover:bg-slate-700"
           required
           disabled
         >
@@ -42,17 +42,17 @@ const { sheets, classesBySheet } = Astro.props;
         </select>
       </div>
 
-      <div class="flex flex-col sm:flex-row gap-3">
+      <div class="flex flex-col sm:flex-row gap-4">
         <button
           type="submit"
-          class="flex-1 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all shadow-lg"
+          class="flex-1 px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-semibold text-lg rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
         >
           View Timetable
         </button>
         <button
           type="button"
           id="save-class-btn"
-          class="flex-1 px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white font-medium rounded-lg transition-all shadow-lg"
+          class="flex-1 px-8 py-4 bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-500 hover:to-slate-600 text-white font-semibold text-lg rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
         >
           Save for Later
         </button>
@@ -60,12 +60,12 @@ const { sheets, classesBySheet } = Astro.props;
     </form>
   </div>
 
-  <div id="saved-timetables" class="mt-8">
-    <h3 class="text-xl font-semibold text-gray-200 mb-4 text-center">
+  <div id="saved-timetables" class="mt-12">
+    <h3 class="text-2xl font-bold bg-gradient-to-r from-slate-300 to-slate-100 bg-clip-text text-transparent mb-8 text-center">
       Your Saved Timetables
     </h3>
-    <div id="saved-list" class="space-y-2"></div>
-    <div id="no-saved-message" class="text-center text-gray-400 py-4">
+    <div id="saved-list" class="space-y-3"></div>
+    <div id="no-saved-message" class="text-center text-slate-400 py-8 text-lg">
       No saved timetables yet. Save one to get started!
     </div>
   </div>
@@ -162,11 +162,11 @@ const { sheets, classesBySheet } = Astro.props;
       const link = document.createElement('a');
       link.href = item.url;
       link.textContent = `${item.sheet} - ${item.className}`;
-      link.className = 'flex-1 p-3 bg-gray-700 hover:bg-gray-600 rounded-lg text-blue-400 hover:text-blue-300 transition-colors';
+      link.className = 'flex-1 p-4 bg-slate-700/80 hover:bg-slate-600/80 rounded-xl text-blue-400 hover:text-blue-300 transition-all duration-200 font-medium text-lg';
       
       const deleteBtn = document.createElement('button');
       deleteBtn.textContent = 'Delete';
-      deleteBtn.className = 'px-3 py-3 bg-red-600 hover:bg-red-700 rounded-lg transition-colors';
+      deleteBtn.className = 'px-6 py-4 bg-red-600 hover:bg-red-700 rounded-xl transition-all duration-200 font-medium text-white shadow-lg hover:shadow-xl';
       deleteBtn.onclick = () => deleteSaved(index);
       
       div.appendChild(link);
