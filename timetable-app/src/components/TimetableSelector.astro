@@ -12,7 +12,7 @@ const { sheets, classesBySheet } = Astro.props;
     <form id="timetable-form" class="space-y-6">
       <div class="space-y-2">
         <label for="sheet-select" class="block text-lg font-medium text-gray-200">
-          📚 Select Category (Branch)
+          Select Category (Branch)
         </label>
         <select
           id="sheet-select"
@@ -29,7 +29,7 @@ const { sheets, classesBySheet } = Astro.props;
 
       <div class="space-y-2">
         <label for="class-select" class="block text-lg font-medium text-gray-200">
-          🎯 Select Class (Section)
+          Select Class (Section)
         </label>
         <select
           id="class-select"
@@ -47,14 +47,14 @@ const { sheets, classesBySheet } = Astro.props;
           type="submit"
           class="flex-1 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all shadow-lg"
         >
-          🔍 View Timetable
+          View Timetable
         </button>
         <button
           type="button"
           id="save-class-btn"
           class="flex-1 px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white font-medium rounded-lg transition-all shadow-lg"
         >
-          💾 Save for Later
+          Save for Later
         </button>
       </div>
     </form>
@@ -62,7 +62,7 @@ const { sheets, classesBySheet } = Astro.props;
 
   <div id="saved-timetables" class="mt-8">
     <h3 class="text-xl font-semibold text-gray-200 mb-4 text-center">
-      ⭐ Your Saved Timetables
+      Your Saved Timetables
     </h3>
     <div id="saved-list" class="space-y-2"></div>
     <div id="no-saved-message" class="text-center text-gray-400 py-4">
@@ -102,7 +102,7 @@ const { sheets, classesBySheet } = Astro.props;
     const className = classSelect.value;
 
     if (!sheet || !className) {
-      alert('⚠️ Please select both category and class');
+      alert('Please select both category and class');
       return;
     }
 
@@ -114,7 +114,7 @@ const { sheets, classesBySheet } = Astro.props;
     const className = classSelect.value;
 
     if (!sheet || !className) {
-      alert('⚠️ Please select both category and class first');
+      alert('Please select both category and class first');
       return;
     }
 
@@ -138,9 +138,9 @@ const { sheets, classesBySheet } = Astro.props;
     localStorage.setItem('savedTimetables', JSON.stringify(filtered));
     renderSavedTimetables();
     
-    saveBtn.textContent = '✅ Saved!';
+    saveBtn.textContent = 'Saved!';
     setTimeout(() => {
-      saveBtn.textContent = '💾 Save for Later';
+      saveBtn.textContent = 'Save for Later';
     }, 2000);
   });
 
@@ -165,7 +165,7 @@ const { sheets, classesBySheet } = Astro.props;
       link.className = 'flex-1 p-3 bg-gray-700 hover:bg-gray-600 rounded-lg text-blue-400 hover:text-blue-300 transition-colors';
       
       const deleteBtn = document.createElement('button');
-      deleteBtn.textContent = '🗑️';
+      deleteBtn.textContent = 'Delete';
       deleteBtn.className = 'px-3 py-3 bg-red-600 hover:bg-red-700 rounded-lg transition-colors';
       deleteBtn.onclick = () => deleteSaved(index);
       

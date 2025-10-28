@@ -1,4 +1,4 @@
-import * as XLSX from "xlsx";
+import XLSX from "xlsx";
 import fs from "fs";
 import path from "path";
 
@@ -143,8 +143,7 @@ function processCourseCode(courseCode: string): string {
     cleaned = cleaned.replace(/[LPT]$/, "");
   }
 
-  const courseMapping: { [key: string]: string } = {
-  };
+  const courseMapping: { [key: string]: string } = {};
 
   return courseMapping[cleaned] || courseCode;
 }
@@ -165,12 +164,12 @@ async function generateData() {
     const excelFilePath = "./timetable.xlsx";
 
     if (!fs.existsSync(excelFilePath)) {
-      console.error("❌ Excel file not found:", excelFilePath);
+      console.error("Excel file not found:", excelFilePath);
       console.log("Please add your timetable.xlsx file to the project root");
       return;
     }
 
-    console.log("📊 Processing Excel file...");
+    console.log("Processing Excel file...");
     const processedData = processExcelFile(excelFilePath);
 
     const dataDir = "./src/data";
@@ -181,9 +180,9 @@ async function generateData() {
     const outputPath = path.join(dataDir, "timetable.json");
     fs.writeFileSync(outputPath, JSON.stringify(processedData, null, 2));
 
-    console.log("✅ Data processed successfully");
+    console.log("Data processed successfully");
     console.log(
-      `📚 Generated data for ${Object.keys(processedData).length} sheets`
+      `Generated data for ${Object.keys(processedData).length} sheets`
     );
 
     Object.entries(processedData).forEach(([sheetName, sheetData]) => {
@@ -192,7 +191,7 @@ async function generateData() {
       );
     });
   } catch (error) {
-    console.error("❌ Error processing Excel file:", error);
+    console.error("Error processing Excel file:", error);
     process.exit(1);
   }
 }
